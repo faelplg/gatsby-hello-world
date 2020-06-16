@@ -1,10 +1,10 @@
-import React from "react"
-import Header from "../components/header"
-import Layout from "../components/layout"
-import { graphql } from "gatsby"
+import React from "react";
+import Header from "../components/header";
+import Layout from "../components/layout";
+import { graphql } from "gatsby";
 
 export default function Home(props) {
-  console.log("props", props)
+  console.log("props", props);
   return (
     <Layout>
       <Header headerText="Amazing Pandas Eating Things" />
@@ -19,7 +19,7 @@ export default function Home(props) {
         </div>
       ))}
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -38,4 +38,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
