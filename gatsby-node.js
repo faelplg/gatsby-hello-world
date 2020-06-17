@@ -1,5 +1,6 @@
-exports.onCreateNode = ({ node }) => {
+exports.onCreateNode = ({ node, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
-    console.log('node.internal.type', node.internal.type);
+    const fileNode = getNode(node.parent);
+    console.log('fileNode.relativePath', fileNode.relativePath);
   }
 };
