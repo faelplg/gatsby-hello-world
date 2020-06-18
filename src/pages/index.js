@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/header";
 import Layout from "../components/layout";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 export default function Home(props) {
   console.log("props", props);
@@ -12,10 +12,18 @@ export default function Home(props) {
       <img src="https://source.unsplash.com/random/400x200" alt="Random img." />
       {props.data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
-          <h3>
-            {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
-          </h3>
-          <p>{node.excerpt}</p>
+          <Link
+            to={node.fields.slug}
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+          >
+            <h3>
+              {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
+            </h3>
+            <p>{node.excerpt}</p>
+          </Link>
         </div>
       ))}
     </Layout>
@@ -32,6 +40,9 @@ export const query = graphql`
           frontmatter {
             title
             date
+          }
+          fields {
+            slug
           }
           excerpt
         }
